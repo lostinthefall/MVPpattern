@@ -34,11 +34,14 @@ public class ViewMain extends AppCompatActivity implements IView {
         setContentView(R.layout.activity_main_view);
         ButterKnife.bind(this);
 
+
         presenter = new Presenter(this);
         //把数据存到presenter
         presenter.deliverDataFromViewToModel(getDataFromView());
         //把数据从presenter拿出来
         presenter.deliverDataFromModeltoView();
+
+
         et.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -47,7 +50,7 @@ public class ViewMain extends AppCompatActivity implements IView {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                setWordsOnTheScreen(s.toString());
+                setDataOnTheScreen(s.toString());
             }
 
             @Override
@@ -60,7 +63,7 @@ public class ViewMain extends AppCompatActivity implements IView {
 
     //在这里把获得的数据显示在view上
     @Override
-    public void setWordsOnTheScreen(String words) {
+    public void setDataOnTheScreen(String words) {
         tv.setText(words);
     }
 

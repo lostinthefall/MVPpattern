@@ -9,7 +9,7 @@ public interface IView {
     String getDataFromView();
 
     //把返回的结果显示在view上
-    void setWordsOnTheScreen(String words);
+    void setDataOnTheScreen(String words);
 
 
 }

@@ -28,6 +28,7 @@ public class Presenter {
 
     //MainView里会用到这个方法，就是把数据从view传到presenter。
     public void deliverDataFromViewToModel(String words) {
+
         //iModel = new Model();
         //model就是操作数据的地方。
         mIMODEL.writeDataToDB(words);
@@ -35,8 +36,9 @@ public class Presenter {
 
     public void deliverDataFromModeltoView() {
         Bean bean = mIMODEL.getDataFromDB();
-        mIView.setWordsOnTheScreen(bean.getWordsFromBean());
 
+        // 因为在构造器传进来的是实现了IView的ViewMain，
+        // 所以下面这个方法就会调用ViewMain的setWordsOnTheScreen。
+        mIView.setDataOnTheScreen(bean.getWordsFromBean());
     }
-
 }
